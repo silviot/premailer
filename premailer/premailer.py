@@ -221,7 +221,6 @@ class Premailer(object):
 
         rules = []
         index = 0
-
         for element in CSSSelector('style,link[rel~=stylesheet]')(page):
             # If we have a media attribute whose value is anything other than
             # 'screen', ignore the ruleset.
@@ -247,9 +246,10 @@ class Premailer(object):
                 else:
                     style = etree.Element('style')
                     style.attrib['type'] = 'text/css'
-                style.text = self._css_rules_to_string(these_leftover)
-                if self.method == 'xml':
-                    style.text = etree.CDATA(style.text)
+                if not self.keep_style_tags:
+                    style.text = self._css_rules_to_string(these_leftover)
+                    if self.method == 'xml':
+                        style.text = etree.CDATA(style.text)
 
                 if not is_style:
                     element.addprevious(style)
