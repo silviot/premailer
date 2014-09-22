@@ -36,7 +36,7 @@ def find_version(*file_paths):
 
 setup(
     name='premailer',
-    version=find_version('premailer', '__init__.py') + '0dafd0407c831e27e5307826b4d58fd062a00b38',
+    version=find_version('premailer', '__init__.py') + '-0dafd0407c831e27e5307826b4d58fd062a00b38',
     description="Turns CSS blocks into style attributes",
     long_description=long_description,
     keywords='html lxml email mail style',
